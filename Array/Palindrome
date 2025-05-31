@@ -1,0 +1,23 @@
+import java.util.Scanner;
+class Solution {
+    public boolean isPalindrome(int x) {
+        String str  = x+"";
+        StringBuffer d = new StringBuffer(str);
+         d.reverse();
+         if(str.equals(d.toString())){
+            return true;
+         }
+         else{
+            return false;
+         }
+    }
+}
+public class Main {
+    public static void main (String [] args){
+        Scanner kb = new Scanner(System.in);
+        Solution obj = new Solution();
+        System.out.println("enter the number");
+        int  x = kb.nextInt();
+        System.out.println(obj.isPalindrome(x));
+    }
+}
