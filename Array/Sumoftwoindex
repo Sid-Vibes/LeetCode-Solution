@@ -1,0 +1,48 @@
+import java.util.Scanner;
+
+class Usetesting {
+    public int[] twoSum(int[] nums, int target) {
+        int[] arr = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) { 
+                if (nums[i] + nums[j] == target) {
+                    arr[0] = i;
+                    arr[1] = j;
+                    return arr;
+                }
+            }
+        }
+        return new int[]{-1, -1}; // Not found
+    }
+}
+
+public class testing {
+    public static void main(String[] args) {
+        Scanner kb = new Scanner(System.in);
+
+        System.out.println("Enter the length of array:");
+        int n = kb.nextInt();
+        int[] nums = new int[n];
+
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < n; i++) {
+            nums[i] = kb.nextInt();
+        }
+
+        System.out.println("Enter the target number:");
+        int target = kb.nextInt();
+
+        Usetesting obj = new Usetesting();
+        int[] result = obj.twoSum(nums, target);
+
+        if (result[0] == -1) {
+            System.out.println("No pair found.");
+        } else {
+            System.out.println("Indices of elements that sum up to target:");
+            System.out.println(result[0]);
+            System.out.println(result[1]);
+        }
+
+        kb.close();
+    }
+}
