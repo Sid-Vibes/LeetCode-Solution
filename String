@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+class Solution {
+    public int myAtoi(String s1) {
+        int i = 0, n = s1.length(), sign = 1;
+        while (i < n && s1.charAt(i) == ' ') {
+            i++;
+        }
+        if (i < n && (s1.charAt(i) == '-' || s1.charAt(i) == '+')) {
+            if (s1.charAt(i) == '-') {
+                sign = -1;
+            }
+            i++;
+        }
+        int res = 0;
+        while (i < n && Character.isDigit(s1.charAt(i))) {
+            int digit = s1.charAt(i) - '0';
+            
+            if (res > (Integer.MAX_VALUE - digit) / 10) {
+                return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            }
+            
+            res = res * 10 + digit;
+            i++;
+        }
+        return res * sign;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner kb = new Scanner(System.in);
+        System.out.println("ENTER YOUR COMMAND");
+        String s1 = kb.nextLine();
+        Solution obj = new Solution();
+        System.out.println(obj.myAtoi(s1));
+        kb.close(); 
+    }
+}
